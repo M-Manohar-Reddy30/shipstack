@@ -1,0 +1,62 @@
+id: authentication
+name: Production-Grade Authentication
+version: 1.0.0
+status: reference
+
+description: >
+  A production-oriented reference for designing, implementing,
+  testing, securing, deploying, observing, and scaling
+  authentication systems.
+
+category: security
+
+difficulty: intermediate
+
+lifecycle:
+  - requirements
+  - architecture
+  - data-model
+  - api
+  - implementation
+  - security
+  - testing
+  - observability
+  - deployment
+  - scaling
+  - failure-modes
+  - interview
+
+capabilities:
+  - user-registration
+  - login
+  - logout
+  - session-management
+  - password-reset
+  - authorization
+  - rate-limiting
+
+engineering_concerns:
+  - security
+  - reliability
+  - testing
+  - observability
+  - scalability
+
+evidence:
+  required:
+    - automated-tests
+    - security-validation
+    - api-validation
+
+technologies:
+  primary:
+    - TypeScript
+    - PostgreSQL
+    - Node.js
+
+  optional:
+    - Redis
+    - Docker
+
+maintainers:
+  - M-Manohar-Reddy30
