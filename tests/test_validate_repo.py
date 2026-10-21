@@ -28,6 +28,12 @@ class ValidateRepoTests(unittest.TestCase):
             check=False,
         )
 
+    def test_missing_scenarios_directory_fails(self):
+        shutil.rmtree(self.root / "scenarios")
+        result = self.run_validator()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("scenarios/ directory does not exist", result.stdout)
+
     def test_valid_scenario_passes(self):
         result = self.run_validator()
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
@@ -46,6 +52,17 @@ class ValidateRepoTests(unittest.TestCase):
         result = self.run_validator()
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("empty README.md", result.stdout)
+
+    def test_missing_required_metadata_field_fails(self):
+        metadata = self.root / "scenarios" / "authentication" / "scenario.yaml"
+        content = metadata.read_text(encoding="utf-8")
+        metadata.write_text(
+            "\n".join(line for line in content.splitlines() if not line.startswith("status:")) + "\n",
+            encoding="utf-8",
+        )
+        result = self.run_validator()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("missing or empty status", result.stdout)
 
     def test_empty_metadata_value_fails(self):
         metadata = self.root / "scenarios" / "authentication" / "scenario.yaml"
