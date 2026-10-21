@@ -25,6 +25,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Validate repository scenarios
+        working-directory: ${{ github.workspace }}
+        run: python3 tools/validate_repo.py
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
