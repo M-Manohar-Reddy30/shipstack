@@ -1,0 +1,53 @@
+id: file-upload
+name: Secure File Upload and Processing
+version: 1.0.0
+status: reference
+
+description: >
+  A reference architecture for securely accepting, validating, processing,
+  storing, and serving uploaded files using asynchronous workers.
+
+category: storage
+difficulty: intermediate
+
+lifecycle:
+  - requirements
+  - architecture
+  - data-model
+  - api
+  - implementation
+  - security
+  - testing
+  - observability
+  - deployment
+  - scaling
+  - failure-modes
+  - interview
+
+capabilities:
+  - authenticated-uploads
+  - file-type-validation
+  - size-limits
+  - quarantine-storage
+  - asynchronous-processing
+  - malware-scanning-integration
+  - processing-retries
+  - authorized-downloads
+
+engineering_concerns:
+  - security
+  - reliability
+  - data-integrity
+  - observability
+  - scalability
+
+technologies:
+  primary:
+    - TypeScript
+    - Node.js
+    - Express
+  optional:
+    - PostgreSQL
+    - S3-compatible-object-storage
+    - Redis-backed-queue
+    - ClamAV
